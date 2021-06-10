@@ -1,0 +1,256 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block css %}
+<style>
+    body {
+
+
+        background-image: url("https://images.unsplash.com/flagged/photo-1601316587579-187125db32c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .alert-danger ul {
+        list-style: none;
+        padding-left: 0;
+</style>
+
+
+
+{% endblock css %}
+
+
+
+{% block content %}
+<div class="container" style="background-color: rgb(57, 95, 91); " text-left">
+    <div class="row">
+
+        {% for item in crops %}
+                    <div class="col-md-6">
+                        <div class="card border-success">
+                            
+                            <div class="card-body">
+                                <img src="{{ item.img.url }}" class="img-thumbnail float-start border-0" height="150" alt="{{ item.name }}">
+                                <h4 class="card-title">{{item.name}}</h4>
+                                <p class="card-text" style="font-size:.8rem">{{item.category}}</p>
+                                <p class="card-text" style="font-size:.8rem">{{item.instruction}}</p>
+                                <p class="card-text" style="font-size:.8rem">{{item.problem}}</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+        {% endfor %}
+
+
+        <div class="col mx-auto my-5 text-left text-white ">
+            <article id="post-1045754" class="post-1045754 page type-page status-publish hentry">
+
+                <h2> Crops</h2>
+                <p align="justify">Crops are plants grown by the farmers. Agriculture plays a very important role in the
+                    Indian economy. It is the backbone of our country. 70% of the Indian population depends on
+                    agriculture for food and money. It is the major occupation in the rural areas. The cultivation of
+                    crops depends primarily on the weather and soil conditions.</p>
+
+                <h2><img class="alignnone wp-image-1108049 size-full" title="Crops"
+                        src="https://media.nationalgeographic.org/assets/photos/120/983/091a0e2f-b93d-481b-9a60-db520c87ec33.jpg"
+                        alt="Crops" width="1000" height="436"></h2>
+
+
+                <h2 my-5>Types of Crops</h2>
+                <p align="justify">The crops are of the following types depending upon the season in which they are
+                    grown:</p>
+                <h3 align="justify">Kharif Crops</h3>
+                <ul>
+                    <li>
+                        <p align="justify">The crops which are grown in the monsoon season are known as Kharif crops.
+                            For eg., maize, millet, and cotton.</p>
+                    </li>
+                    <li>
+                        <p align="justify">The seeds are sown at the beginning of monsoon season and harvested at the
+                            end of the monsoon season.</p>
+                    </li>
+                    <li>
+                        <p align="justify">Such crops require a lot of water and hot weather for proper growth.</p>
+                    </li>
+                </ul>
+                <h3 align="justify">Rabi Crops</h3>
+                <ul>
+                    <li>
+                        <p align="justify">The name “Rabi” means “spring” – a word derived from Arabic.</p>
+                    </li>
+                    <li>
+                        <p align="justify">The crops that are grown in the winter season and harvested in the spring are
+                            called Rabi crops.</p>
+                    </li>
+                    <li>
+                        <p align="justify">Wheat, gram, and mustard are some of the Rabi crops.</p>
+                    </li>
+                    <li>
+                        <p align="justify">Various agricultural practices are carried out to produce new crop varieties.
+                        </p>
+                    </li>
+                    <li>
+                        <p align="justify">Such crops require a warm climate for the germination and maturation of
+                            seeds. They, however, require a cold climate for their growth.</p>
+                    </li>
+                </ul>
+                <h3>Zaid Crops</h3>
+                <ul>
+                    <li>
+                        <p align="justify">Such crops are grown between the Kharif and Rabi seasons, i.e., between March
+                            and June.</p>
+                    </li>
+                    <li>
+                        <p align="justify">These crops mature early.</p>
+                    </li>
+                    <li>
+                        <p align="justify">Cucumber, pumpkin, bitter gourd, and watermelon are zaid crops.</p>
+                    </li>
+                </ul>
+
+                <h2>Factors Affecting Crop Production</h2>
+                <p align="justify">The factors affecting the production of crops include:</p>
+                <h3>Internal or Genetic Factors</h3>
+                <p align="justify">The genetic makeup decides crop growth and production. Breeders incorporate maximum
+                    desirable characters in the crops to obtain a new hybrid variety. The desirable characters include:
+                </p>
+                <ul>
+                    <li>
+                        <p align="justify">Early maturity</p>
+                    </li>
+                    <li>
+                        <p align="justify">High yielding ability</p>
+                    </li>
+                    <li>
+                        <p align="justify">Resistance to drought, flood, and salinity</p>
+                    </li>
+                    <li>
+                        <p align="justify">Tolerance to insect and diseases</p>
+                    </li>
+                    <li>
+                        <p align="justify">Resistance to lodging</p>
+                    </li>
+                    <li>
+                        <p align="justify">The chemical composition of grains</p>
+                    </li>
+                    <li>
+                        <p align="justify">Quality of grains and straw</p>
+                    </li>
+                </ul>
+                <p align="justify">These characters are transmitted from one generation to another.</p>
+                <h3>External or Environmental Factors</h3>
+                <p align="justify">The external factors include:</p>
+                <ul>
+                    <li>
+                        <p align="justify">Climatic</p>
+                    </li>
+                    <li>
+                        <p align="justify">Edaphic</p>
+                    </li>
+                    <li>
+                        <p align="justify">Biotic</p>
+                    </li>
+                    <li>
+                        <p align="justify">Socio-economic</p>
+                    </li>
+                </ul>
+                <h4>Climatic Factors</h4>
+                <p align="justify">The climatic factors that affect crop production include:</p>
+                <ul>
+                    <li>
+                        <p align="justify">Precipitation</p>
+                    </li>
+                    <li>
+                        <p align="justify">Temperature</p>
+                    </li>
+                    <li>
+                        <p align="justify">Atmospheric Humidity</p>
+                    </li>
+                    <li>
+                        <p align="justify">Solar radiation</p>
+                    </li>
+                    <li>
+                        <p align="justify">Wind Velocity</p>
+                    </li>
+                    <li>
+                        <p align="justify">Atmospheric Gases</p>
+                    </li>
+                </ul>
+                <h4>Edaphic Factors</h4>
+                <p align="justify">The growth of the plants depends upon the type of soil on which they are grown. These
+                    are known as edaphic factors and include the following:</p>
+                <ul>
+                    <li>
+                        <p align="justify">Soil Moisture</p>
+                    </li>
+                    <li>
+                        <p align="justify">Soil Air</p>
+                    </li>
+                    <li>
+                        <p align="justify">Soil Temperature</p>
+                    </li>
+                    <li>
+                        <p align="justify">Soil Mineral Matter</p>
+                    </li>
+                    <li>
+                        <p align="justify">Soil Organic Matter</p>
+                    </li>
+                    <li>
+                        <p align="justify">Soil Organisms</p>
+                    </li>
+                    <li>
+                        <p align="justify">Soil Reactions</p>
+                    </li>
+                </ul>
+                <h4>Biotic Factors</h4>
+                <p align="justify">Plants and animals are biotic factors that affect crop production. Even pests impact
+                    crop production, often with negative implications.</p>
+                <h4>Socio-economic Factors</h4>
+                <ul>
+                    <li>
+                        <p align="justify">The number of human resources available for cultivation.</p>
+                    </li>
+                    <li>
+                        <p align="justify">The inclination of society towards cultivation.</p>
+                    </li>
+                    <li>
+                        <p align="justify">Appropriate choice of crops.</p>
+                    </li>
+                    <li>
+                        <p align="justify">Breeding varieties for increased yield or pest resistance by human
+                            inventions.</p>
+                    </li>
+                </ul>
+                <h2>Cash Crops</h2>
+                <p align="justify">A cash crop is the one that is cultivated to be sold in the market to earn profits
+                    from the sale.</p>
+                <p align="justify">Most of the crops grown today worldwide are cash crops cultivated for selling in the
+                    national and international markets.</p>
+                <p align="justify">Most of the cash crops grown in the developing nations are sold to the developed
+                    nations for a better price.</p>
+                <p align="justify">Well-known cash crops include coffee, tea, cocoa,&nbsp;cotton, and sugarcane.</p>
+                <h2>Food Crops</h2>
+                <p align="justify">The crops that are grown to feed the human population are known as food crops. There
+                    are a number of food crops grown in the country.</p>
+                <p align="justify"><strong>Rice: </strong>It is the staple food crop in a majority of regions in the
+                    country. Rice is a Kharif crop that requires high temperature, heavy rainfall and high humidity for
+                    proper growth. The areas with less rainfall use irrigation for rice cultivation.</p>
+                <p align="justify"><strong>Wheat:&nbsp;</strong>It is the most important cereal crop in the north and
+                    north-western parts of the country. It is a rabi crop that requires 50-75 cm of annual rainfall.</p>
+                <p align="justify"><strong>Millets:&nbsp;</strong>The important millets grown in the country include
+                    jowar, bajra and ragi. They are highly nutritious and are known as coarse grains. It grows in the
+                    regions which experience rainfall throughout the year.</p>
+                <p align="justify"><strong>Maize:&nbsp;</strong>This Kharif crop is used as both food and fodder. It
+                    grows well in alluvial soil.</p>
+                <p align="justify"><strong>Pulses:&nbsp;</strong>India is the largest consumer and producer of pulses in
+                    the world. Pulses can survive even in dry conditions. These are leguminous crops and help in
+                    improving soil fertility by fixing atmospheric nitrogen.</p>
+                <p align="justify">The human population depends upon crops for their food production. Therefore, the
+                    crops should be cultivated using proper production techniques and agriculture implements.</p>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}

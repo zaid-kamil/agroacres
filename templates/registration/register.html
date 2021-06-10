@@ -1,0 +1,55 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block css %}
+<style>
+    body{
+       
+        background-image: url("https://images.unsplash.com/flagged/photo-1601316587579-187125db32c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .alert-danger ul {
+        list-style: none;
+        padding-left: 0;
+    }
+</style>
+{% endblock css %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row my-5">
+        <div class="col-lg-5 col-sm-5 formarea mx-auto">
+            
+            <div class="card text-white" style="background-color: rgb(32, 30, 30);">
+                <div class="card-body">
+                    <h4 class="card-title">Register </h4>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <button  class="btn btn-primary btn-sm btn-block">Sign In</button>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <a  class="btn text-info btn-sm btn-block" href="{% url 'login' %}" >Already have an account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block js %}
+<script>
+    $(function () {
+        anime({
+            targets: '.formarea',
+            translateY: '1%'
+        });
+    });
+</script>
+{% endblock js %}

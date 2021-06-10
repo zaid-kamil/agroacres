@@ -1,0 +1,87 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block css %}
+<style>
+    body {
+
+
+        background-image: url("https://images.unsplash.com/flagged/photo-1601316587579-187125db32c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .alert-danger ul {
+        list-style: none;
+        padding-left: 0;
+    }
+</style>
+
+{% endblock css %}
+
+
+
+{% block content %}
+<div class="container">
+
+    <div class="row my-5">
+        <div class="col-lg-6 col-sm-6 mx-auto">
+            <div class="card text-white " style="background-color: rgb(32, 30, 30);">
+                
+                <div class="card-body">
+                <img class="img-thumbnail w-30 float-start" src="{{ seed.img.url }}" alt="{{ seed.name }}">
+                    <h4 class="card-title my-3">{{ seed.name }}</h4>
+                </div>
+                <div class="card-body ">
+                    <p class="lead "> Details : {{seed.description}}<span id='detail'></span>  <span id="[product_detail"></span> {{seed.description}}</span> </p>
+                    <p class="lead ">Price : Rs.{{seed.price}} X <span id='cqty'>1 kg</span> = <span id="total_price">{{seed.price}}</span> </p>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-6 formarea mx-auto">
+
+            <div class="card text-white">
+                <div class="card-body" style="background-color: rgb(32, 30, 30);">
+
+                    <div class="card-body">
+                    <h4 class="card-title">Purchase</h4>
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        {{form|crispy}}
+                        
+                        <button class="btn btn-info btn-sm btn-block">Place Order</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+     </div>
+        {% endblock content %}
+
+        
+        {% block js %}
+        <script>
+            $(function () {
+                $('#id_qty').on('input',function(e){
+                    qty =  $('#id_qty').val();
+                    price = {{seed.price}};
+                    let total = qty * price
+                    $('#total_price').text(total)
+                    $('#id_total_amt').val(total)
+                    $('#id_qty').text(qty)
+                });
+               $('.form-control').each(function(index,value){
+                  
+                    $(this).addClass('form-control-sm')
+               });
+               $('textarea').attr({'rows':5})
+            });
+        </script>    
+        {% endblock js %}
+        

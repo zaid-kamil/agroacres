@@ -1,0 +1,163 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+
+{% block css %}
+<style>
+    body {
+
+
+        background-image: url("https://images.unsplash.com/flagged/photo-1601316587579-187125db32c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+
+    .alert-danger ul {
+        list-style: none;
+        padding-left: 0;
+</style>
+{% endblock css %}
+
+
+{% block content %}
+<div class="container" style="background-color: rgb(57, 95, 91); " text-left">
+    <div class="row">
+        <div class="col mx-auto my-5 text-left text-white ">
+            <div class="h1-banner-title">
+                            <h1>Soil</h1>
+                        </div>
+           
+            <p class="lead">
+                <strong>“Soil profile is defined as the vertical section of the soil from the ground surface downwards
+                    to where the soil meets the underlying rock.” </strong>
+            <p>
+                Soil is one of the most important naturally occurring resources. It is the natural habitat of plants and
+                many microorganisms. It nourishes plants with water and essential nutrients hence enabling their growth.
+                Soil is the most important raw material for agriculture. Agriculture provides food, clothing and shelter
+                to all entities either directly or indirectly. Hence, soil is an inseparable part of our living.
+            </p>
+            The soil is the topmost layer of the earth’s crust mainly composed of organic minerals and rock particles
+            that support life. A soil profile is a vertical
+            cross-section of the soil, made of layers running parallel to the surface. These layers are known as soil
+            horizons.</p>
+            <h2><img class="alignnone wp-image-1108049 size-full" title="Crops"
+                        src="https://media.smilinggardener.com/files/images/articles/collection/all-about-soil/3-all-about-soil-worms.jpg"
+                        alt="Crops" width="1000" height="436"></h2>
+            <p>
+                Soil is the loose surface material that covers most land. It consists of inorganic particles and organic
+                matter. Soil provides the structural support to plants used in agriculture and is also their source of
+                water and nutrients.
+
+                Soils vary greatly in their chemical and physical properties. Processes such as leaching, weathering and
+                microbial activity combine to make a whole range of different soil types. Each type has particular
+                strengths and weaknesses for agricultural production.</p><br>
+            <br>
+            <h2>Physical characteristics of soil</h2>
+            <p>The physical characteristics of soils include all the aspects that you can see and touch such as:</p>
+
+            <ul>
+                <li>Texture</li>
+                <li>Colour</li>
+                <li>Depth</li>
+                <li>Structure</li>
+                <li>Porosity</li>
+                <li>Stone</li>
+            </ul>
+            <div class="card" style="width: 65rem; height: auto;">
+
+                <img src="https://agriculture.vic.gov.au/__data/assets/image/0010/560863/soil-aggregate.png"
+                    class="card-img-top" alt="...">
+
+            </div>
+            <br>
+
+            <h2>Types of Soil</h2>
+            <h4>There are four types of soil:</h4>
+
+            <ul>
+
+                <div class="row">
+                    <div class="col-sm-6 vcenter text-center image-section-left my-4">
+                        <img class="bd-placeholder-img rounded-circle" width="350" height="350" img-align="center"
+                            src="https://www.boughton.co.uk/wp-content/uploads/sites/14/2019/07/Sandy-Soil-1.jpg"
+                            alt="Sandy Soil">
+
+
+
+                    </div>
+                    <div class="col-sm-5 vcenter text-section-right my-3">
+                        <h3>Sandy soil</h3>
+                        <p>Sandy Soil is light, warm, dry and tend to be acidic and low in nutrients. Sandy soils are
+                            often known as light soils due to their high proportion of sand and little clay (clay weighs
+                            more than sand).
+                        <p>These soils have quick water drainage and are easy to work with. They are quicker to warm up
+                            in spring than clay soils but tend to dry out in summer and suffer from low nutrients that
+                            are washed away by rain.</p>
+                        <p>The addition of organic matter can help give plants an additional boost of nutrients by
+                            improving the nutrient and water holding capacity of the soil.</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 vcenter text-center image-section-left my-3">
+                            <img class="bd-placeholder-img rounded-circle" width="350" height="350" img-align="center"
+                                src="https://www.boughton.co.uk/wp-content/uploads/sites/14/2019/07/Clay-Soil-1.jpg"
+                                alt="Clay Soil">
+                        </div>
+
+                        <div class="col-sm-5 vcenter text-section-right my-3">
+                            <h3><strong>Clay Soil</strong></h3>
+                            <p>Clay Soil is a heavy soil type that benefits from high nutrients. Clay soils remain wet
+                                and cold in winter and dry out in summer.</p>
+                            <p>These soils are made of over 25 percent clay, and because of the spaces found between
+                                clay particles, clay soils hold a high amount of water.</p>
+                            <p>Because these soils drain slowly and take longer to warm up in summer, combined with
+                                drying out and cracking in summer, they can often test gardeners.</p>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 vcenter text-center image-section-left my-3">
+                                <img class="bd-placeholder-img rounded-circle" width="350" height="350"
+                                    img-align="center"
+                                    src="https://www.boughton.co.uk/wp-content/uploads/sites/14/2019/07/Silt-Soil.jpg"
+                                    alt="Silt Soil">
+                            </div>
+
+                            <div class="col-sm-5 vcenter text-section-right my-3">
+                                <h3><strong></strong> Soil</h3>
+                                <p>Silt Soil is a light and moisture retentive soil type with a high fertility rating.
+                                </p>
+                                <p>As silt soils compromise of medium sized particles they are well drained and hold
+                                    moisture well.</p>
+                                <p>As the particles are fine, they can be easily compacted and are prone to washing away
+                                    with rain.</p>
+                                <p>By adding organic matter, the silt particles can be bound into more stable clumps.
+                                </p>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6 vcenter text-center image-section-left my-3">
+                                    <img class="bd-placeholder-img rounded-circle" width="350" height="350"
+                                        img-align="center"
+                                        src="https://www.boughton.co.uk/wp-content/uploads/sites/14/2019/07/Loam-Soil.jpg"
+                                        alt="Loam Soil">
+                                </div>
+                                <div class="col-sm-5 vcenter text-section-right my-3">
+                                    <h3>Loam Soil</h3>
+                                    <p>Loam soil is a mixture of sand, silt and clay that are combined to avoid the
+                                        negative effects of each type.</p>
+                                    <p>These soils are fertile, easy to work with and provide good drainage. Depending
+                                        on their predominant composition they can be either sandy or clay loam.</p>
+                                    <p>As the soils are a perfect balance of soil particles, they are considered to be a
+                                        gardeners best friend, but still benefit from topping up with additional organic
+                                        matter.</p>
+                                </div>
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}

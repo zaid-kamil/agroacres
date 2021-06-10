@@ -1,0 +1,200 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block css %}
+<style>
+    body {
+
+
+        background-image: url("https://images.unsplash.com/flagged/photo-1601316587579-187125db32c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .alert-danger ul {
+        list-style: none;
+        padding-left: 0;
+</style>
+
+
+
+{% endblock css %}
+
+
+
+{% block content %}
+
+<div class="container" style="background-color: rgb(57, 95, 91); " text-left">
+    <div class="row">
+        <div class="col mx-auto my-5 text-left text-white ">
+            <div class="col-sm-8 col-md-10">
+                <div data-scroll-left="" position: relative;">
+                    <div data-scroll-left-container="" >
+
+                        <div class="h1-banner-title">
+                            <h1>Major Cropping Seasons</h1>
+                        </div>
+
+
+                        <p>There are three main cropping seasons in India – Kharif, Rabi, and Zaid. To know the
+                            important facts about these Indian cropping seasons is important from the <a
+                               
+                        <h2>Facts about three cropping seasons in India</h2>
+                        <p>The important facts about the major cropping seasons of India are given in the tables below:
+                        </p>
+                        <p><strong>#Kharif Season</strong></p>
+                        <div class="table-responsive" text-white>
+                            <table class="table table-bordered"; >
+                                <tbody>
+                                    <tr style="background-color: #491569; color: white;">
+                                        <td colspan="2">
+                                            <p style="text-align: center;" ><b>Major Cropping Season in India –
+                                                    Kharif</b></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-weight : 400;" >What are the examples of Kharif
+                                                Crops?</span></td>
+                                        <td><span style="font-weight: 400;">Some important Kharif Crops are:</span>
+                                            <p></p>
+                                            <ul>
+                                                <li style="font-weight: 400;"><span
+                                                        style="font-weight: 400;">Bajra</span></li>
+                                                <li style="font-weight: 400;"><span
+                                                        style="font-weight: 400;">Jowar</span></li>
+                                                <li style="font-weight: 400;"><span style="font-weight: 400;">Maize
+                                                        (corn)</span></li>
+                                                <li style="font-weight: 400;"><span
+                                                        style="font-weight: 400;">Millet</span></li>
+                                                <li style="font-weight: 400;"><span style="font-weight: 400;">Rice
+                                                        (paddy and deepwater rice)</span></li>
+                                                <li style="font-weight: 400;"><span
+                                                        style="font-weight: 400;">Soybean</span></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-weight: 400;">What is meant by Kharif Season?</span></td>
+                                        <td><span style="font-weight: 400;">The cropping season in India starts in June
+                                                and ends in October where monsoon crops are cultivated and
+                                                harvested.</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>#Rabi Season</strong></p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr style="background-color: #491569; color: white;">
+                                        <td colspan="2">
+                                            <p style="text-align: center;"><b>Major Cropping Season in India – Rabi</b>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-weight: 400;">What are Rabi crops? Examples.</span></td>
+                                        <td><span style="font-weight: 400;">Some important Rabi Crops are:</span>
+                                            <p></p>
+                                            <ul>
+                                                <li style="font-weight: 400;"><span
+                                                        style="font-weight: 400;">Barley</span></li>
+                                                <li style="font-weight: 400;"><span
+                                                        style="font-weight: 400;">Gram</span></li>
+                                                <li style="font-weight: 400;"><span
+                                                        style="font-weight: 400;">Rapeseed</span></li>
+                                                <li style="font-weight: 400;"><span
+                                                        style="font-weight: 400;">Mustard</span></li>
+                                                <li style="font-weight: 400;"><span style="font-weight: 400;">Oat</span>
+                                                </li>
+                                                <li style="font-weight: 400;"><span
+                                                        style="font-weight: 400;">Wheat&nbsp;</span></li>
+                                                <li style="font-weight: 400;"><span
+                                                        style="font-weight: 400;">Bajra&nbsp;</span></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-weight: 400;">Is Coffee a Rabi crop?</span></td>
+                                        <td><span style="font-weight: 400;">No, Tea and Coffee are Kharif
+                                                crops.&nbsp;</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-weight: 400;">What is a Rabi season?</span></td>
+                                        <td><span style="font-weight: 400;">The season where crops are sown in
+                                                mid-November and harvested in April/May is called Rabi
+                                                Season.&nbsp;</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><strong>#Zaid Season</strong></p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr style="background-color: #491569; color: white;">
+                                        <td colspan="2">
+                                            <p style="text-align: center;"><b>Major Cropping Season in India – Zaid</b>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-weight: 400;">What are Zaid crops? Examples.</span></td>
+                                        <td><span style="font-weight: 400;">Some important Zaid Crops are:</span>
+                                            <p></p>
+                                            <ul>
+                                                <li style="font-weight: 400;"><span
+                                                        style="font-weight: 400;">Pumpkin</span></li>
+                                                <li style="font-weight: 400;"><span
+                                                        style="font-weight: 400;">Cucumber</span></li>
+                                                <li style="font-weight: 400;"><span style="font-weight: 400;">Bitter
+                                                        Gourd.</span></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-weight: 400;">When Zaid crops are sown and
+                                                harvested?</span></td>
+                                        <td><span style="font-weight: 400;">Since the Zaid crops are also called summer
+                                                crops, they are sown and harvested between March and June.&nbsp;</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h3 style="text-align: justify;"><strong>Types of crops in India – Details</strong></h3>
+                        <p style="text-align: justify;"><strong>1. Kharif Crops</strong></p>
+                        <ul style="text-align: justify;">
+                            <li>July – October</li>
+                            <li>Harvest – September to October</li>
+                            <li>A.k.a Monsoon Crops</li>
+                            <li>Such crops require a lot of water</li>
+                            <li>Example: rice, sorghum, maize, tea, rubber, coffee, guar, Sesame, cereals such as Arhar
+                                Dhal, pearl millet, soybeans, cotton, oilseeds, etc.</li>
+                        </ul>
+                        <p><strong>2. Rabi Crops</strong></p>
+                        <ul style="text-align: justify;">
+                            <li>Sowing between October and November</li>
+                            <li>Harvest – February to April</li>
+                            <li>A.k.a Winter Season Crops</li>
+                            <li>Need cold weather for growth</li>
+                            <li>Need less water</li>
+                            <li>Example: wheat, oats, barley, pulses, cereals, oilseeds, linseed, etc.</li>
+                        </ul>
+                        <p style="text-align: justify;"><strong>3. Zaid Crops</strong></p>
+                        <ul style="text-align: justify;">
+                            <li>Sowing between March and June (between Kharif and Rabi)</li>
+                            <li>Requires warm &amp; dry weather for growth and a longer day-length for flowering</li>
+                            <li>Example: Seasonal fruits and vegetables</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    {% endblock content %}

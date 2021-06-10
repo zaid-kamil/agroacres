@@ -1,11 +1,111 @@
 {% extends 'layout/base.html' %}
+{% load static %}
+
+{% block css %}
+    <style>
+        body{
+        
+    
+        background-image: url("https://images.unsplash.com/photo-1536657464919-892534f60d6e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80");
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+
+        .alert-danger ul {
+        list-style: none;
+        padding-left: 0;
+        }
+
+       
+
+        
+        
+    </style>
+    
+{% endblock css %}
 
 {% block content %}
-   <div class="container">
-       <div class="row">
-           <div class="col mx-auto my-5 text-center">
-            <h1>Welcome to template website</h1> 
+   <div class="container " style="background-color: rgb(103, 194, 194);">
+       <div class="row" my-3>
+           <div class="col mx-auto my-5 text-center text-white">
+            <h1 style="font-size:60px;">AgroAcres</h1>
+            <p class="lead">Agricultural portal which provides solutions to farmers and  agricultural students.<br> It helps the farmers to get information regarding soil, 
+            crops, fertilizers and seasons for good cultivation. Also it provide the facility to sell and buy seeds from our website.
+            </p>
            </div>
        </div>
    </div>
+  <div class="container my-5"  >
+   <img src="https://farmer.gov.in/map/india.png" class="card-img-top"  alt="... " width="500" height="950">
+  </div>
+
+ 
+
+
+  
+
+  <div class="container my-4" style="background-color:rgb(57, 95, 91)">
+    <div class="row">
+        <div class="col mx-auto my-5 text-left text-white">
+     
+         <p class="lead"><strong>Agriculture</strong> is the art and science of cultivating the soil, growing crops and raising livestock. It includes the preparation of plant and animal products for people to use and their distribution to markets.
+             <br> Agriculture provides most of the world’s food and fabrics. Cotton, wool, and leather are all agricultural products. Agriculture also provides wood for construction and paper products.<br>
+             <br>
+             AgroAcres is an end-to-end application to assist the farmers. It makes the life of farmer easier by offering a number of services. Firstly, Farmers Buddy which is a next generation, provides solutions to small farmers and agriculture students of India with an endeavor to organize all the necessary data on a common portal. 
+             <br>
+             
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container my-5">
+  <div class="row my-3">
+    <div class="col-lg-6 text-center text-white">
+      <img class="bd-placeholder-img rounded-circle" width="120" height="120" src="https://image.freepik.com/free-vector/indian-farmer-man-kneeling-holding-crop-plant-cartoon-style_118421-536.jpg" alt="">
+
+      <h3>Crops</h3>
+      <p>A crop is a plant or animal product that can be grown and harvested extensively for profit or subsistence.</p>
+      <p><a class="btn btn-danger" href="{% url 'crop' %}">View details »</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4 text-center text-white">
+      <img class="bd-placeholder-img rounded-circle" width="120" height="120" src="https://www.clipartkey.com/mpngs/m/14-147828_clip-art-clip-art-shovels-shovel-and-dirt.png" alt="">
+
+      <h3>Soil</h3>
+      <p>Soil is a mixture of organic matter, minerals, gases, liquids, and organisms that together support life.</p>
+      <p><a class="btn btn-success" href="{% url 'soil' %}">View details »</a></p>
+    </div><!-- /.col-lg-4 -->
+   
+
+  <div class="row my-3">
+    
+      
+    <div class="col-lg-6 text-center text-white">
+      <img class="bd-placeholder-img rounded-circle" width="120" height="120" src="https://thumbs.dreamstime.com/z/stop-global-warming-vector-illustration-cartoon-character-planet-earth-white-background-116320803.jpg" alt="">
+
+      <h3>Season</h3>
+      <p>
+        Growing or farming season is a period of the year during which growing conditions, like temperature and moisture, are most favorable for cultivation of crops.
+      </p>
+      
+      <p><a class="btn btn-warning text-center text-white" href="{% url 'season' %}">View details »</a></p>
+    </div><!-- /.col-lg-4 -->
+    
+    <div class="col-lg-4 text-center text-white ">
+      <img class="bd-placeholder-img rounded-circle" width="120" height="120" src="https://www.suryaagro.tech/assets/images/what_we_do/fertilizer.png" alt="">
+
+      <h3>Fertilizer</h3>
+      <p>A fertilizer is any material of natural or synthetic origin that is applied to soil or to plant tissues to supply plant nutrients. </p>
+      <p><a class="btn btn-info" href="{% url 'fertilizer' %}">View details »</a></p>
+    </div><!-- /.col-lg-4 -->
+    
+     
+   
+    
+  </div>
+</div>
+
+  
+   
+
+  
 {% endblock content %}

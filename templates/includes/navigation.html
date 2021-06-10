@@ -1,0 +1,67 @@
+
+
+
+<header class="site-header sticky-top ">
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom shadow-sm">
+  <a class="py-2" href="#" aria-label="Product" >
+    <svg  width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"></circle></svg>
+  </a>
+  <h5 class="my-0 mr-md-auto font-weight-normal"><a class="nav-link text-info" href="{% url 'home' %}">AgroAcres</a></h5>
+  
+  
+  
+
+ 
+
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-info" href="{% url 'about' %}">About Us</a>
+  </nav>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-info" href="{% url 'query' %}">Ask Query</a>
+  </nav>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-info" href="{% url 'contact' %}">Contact Us</a>
+  </nav>
+  
+
+  
+  
+  
+  
+ 
+  {% if user.is_authenticated  %}
+      <div class="btn-group">
+          <a class="btn btn-info" href="{% url 'dashboard' %}">Hello {{user.username}}! </a>
+          <button  class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <div class="dropdown-menu  dropdown-menu-right">
+            
+          
+            
+            {% if user.is_superuser %}
+            <a class="dropdown-item " href="{% url 'admin:index' %}">Admin Services</a>
+            {% endif %}
+         
+          
+            
+            <a class="dropdown-item" href="{% url 'seed' %}">E-Seed</a>
+            <a class="dropdown-item" href="{% url 'addseed' %}"> Sell Seed</a>
+            
+           
+          
+            <a class="dropdown-item" href="{% url 'training' %}">Videos</a>
+            <a class="dropdown-item" href="#"> <i class="fa fa-cart-plus" aria-hidden="true"></i>   My Cart</a>
+
+            <a class="dropdown-item" href="{% url 'password_change' %}"><i class="fa fa-key" aria-hidden="true"></i> Change Password</a>
+           
+            <a class="dropdown-item" href="{% url 'logout' %}"> <i class="fa fa-lock" aria-hidden="true"></i>  Logout</a>
+          </div>
+        </div>
+  {% else %}
+      <a class="btn btn-outline-info" href="{% url 'login' %}"><i class="fa fa-user-circle" aria-hidden="true"></i> Sign In</a>
+  {% endif %}
+      
+  
+</div>
+</header>
