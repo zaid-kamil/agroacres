@@ -4,53 +4,71 @@
 
 {% block css %}
 <style>
-  body {
-
-
-      background-image: url("https://images.unsplash.com/flagged/photo-1601316587579-187125db32c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
-      background-repeat: no-repeat;
-      background-size: cover;
-  }
-
-  .alert-danger ul {
-      list-style: none;
-      padding-left: 0;
-</style>
-
-{% endblock css %}
+    body {
+        
+        
+        background-image: url("https://images.unsplash.com/flagged/photo-1601316587579-187125db32c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
     
-{% block content %}
-<div class="container" style:"background-color: rgb(57, 95, 91); " text-left">
-    <div class="row">
-        <div class="col-lg-9 mx-auto my-5 text-left text-white ">
-            {% if query %}
-            <h1> Search results for '{{query}}'</h1>
-            {% for record in crop %}
-                <p>{{record.name}}</p>
-                <p>{{record.category}}</p>
-                <p>{{record.type}}</p>
-                <p>{{record.sown}}</p>
-                <p>{{record.harvest}}</p>
-                <p>{{record.soil}}</p>
-                <p>{{record.season}}</p>
-                <p>{{record.fertilizer}}</p>
-                <p>{{record.instruction}}</p>
-                <p>{{record.problem}}</p>
-      
-            {% empty %}
-                <h3>OPPS!! No Record Found</h3>
-
-            {% endfor %}
-            
-</div>
-</div>
-</div>
-</div>
-
-
-
-{% endblock %}
+    .alert-danger ul {
+        list-style: none;
+        padding-left: 0;
+    </style>
     
-% block js %}
+    {% endblock css %}
     
-{% endblock % }
+    {% block content %}
+    <div class="container" style:"background-color: rgb(57, 95, 91); " text-left">
+        <div class="row">
+            <div class="col-lg-9 mx-auto my-5 text-left text-dark ">
+                
+                <div class="card">
+                     <img src="{{results.0.img.url}}" alt="{{record.name}}">
+                   
+                    <div class="card-body my-2">
+                        
+                        {% for record in results %}
+                        <div>     
+                               
+                            <p class="lead "><b>Crop Name </b>: {{record.name}}</p>
+                            <p class="lead"><b>Category Of Crop </b>: {{record.category}}</p>
+                            <p class="lead"><b>Type oF Crop</b>: {{record.type}}</p>
+                            
+                            <p class="lead"><b>Sown in </b>: {{record.sown}}</p>
+                            <p class="lead"><b>Harvested in</b>: {{record.harvest}}</p>
+                            <hr>
+                            <p class="lead"><b> Soil Required</b>: {{record.soil}}</p>
+                            <img src="{{record.soil.img.url}}"  height="300" width="300" alt="" class="thumbnail">
+                            <p>{{record.soil.description}}</p>
+                            <hr>
+                            <p class="lead"><b>Season</b>: {{record.season}}</p>
+                           
+                            <img src="{{record.season.img.url}}"  height="300" width="300" alt="" class="thumbnail">
+                            <p>{{record.season.description}}</p>
+                            <hr>
+                            <p class="lead"><b> Fertilizers Used</b>: {{record.fertilizer}}</p>
+                            <img src="{{record.fertilizer.img.url}}"  height="300" width="300" alt="" class="thumbnail">
+                            <p>{{record.fertilizer.description}}</p>
+                            <hr>
+
+                            <p class="lead"><b>Instruction for {{record.name}} cultivation</b><br>{{record.instruction|linebreaks}}</p>
+                            <p class="lead"><b>Problem related to {{record.name}}</b><br>{{record.problem|linebreaks}}</p>
+                        </div>
+                        {% empty %}
+                        <h3 class="card-title">OPPS!! No Record Found</h3>
+                        
+                        {% endfor %}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    {% endblock %}
+    
+    

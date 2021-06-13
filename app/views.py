@@ -182,14 +182,25 @@ def dashboard(request):
     ctx = {'crop':crop}
     return render(request,'product/dashboard.html',ctx)
 
+def allcrops(request):
+    crop = Crop.objects.all()
+    ctx = {'crop':crop}
+    return render(request,'product/allcrops.html',ctx)
+
 def searchcrop(request):
     query = request.GET.get('s','')
     if len(query) > 0:
-        data = Crop.objects(name_contains = query)
+        data = Crop.objects.filter(name__icontains = query)
         ctx = {'query':query,'results': data}
+        if len(data)>0:
+            messages.success(request,f"search result found for {query}")
+        else:
+            messages.error(request,f"search result not found for {query}")
+
     else:
         ctx = {"message": "No query is given"}
-        return render(request,'product/searchcrop.html',ctx)
+
+    return render(request,'product/searchcrop.html',ctx)
 
 @login_required
 def add_to_cart(request,seedpk):

@@ -1,8 +1,13 @@
 
 from app.models import Purchase
 from django.urls import path
+<<<<<<< Updated upstream
 from .views import crop, fertilizer, homeview, searchcrop, contact, purchase_one,addseed, season,dashboard, soil,about,query, training,seed,purchase,add_to_cart
 from .views import payment,LandingPage, successview, cancleview,CheckoutView
+=======
+from .views import crop, fertilizer, homeview, searchcrop, contact, purchase_one,addseed, season,dashboard, soil,about,query, training,seed,purchase,add_to_cart,allcrops
+from .views import payment
+>>>>>>> Stashed changes
 
 urlpatterns = [
     path('', homeview, name='home'),
@@ -13,6 +18,7 @@ urlpatterns = [
     path('seed/',seed, name='seed'),
     path('season/',season, name='season'),
     path('crop/',crop, name='crop'),
+    path('allcrops/',allcrops, name='allcrops'),
     path('dashboard/',dashboard, name='dashboard'),
     path('searchcrop/',searchcrop, name='searchcrop'),
     path('purchase/',purchase, name='purchase'),
