@@ -2,7 +2,7 @@
 from app.models import Purchase
 from django.urls import path
 from .views import crop, fertilizer, homeview, searchcrop, contact, purchase_one,addseed, season,dashboard, soil,about,query, training,seed,purchase,add_to_cart
-from .views import payment
+from .views import payment,LandingPage, successview, cancleview,CheckoutView
 
 urlpatterns = [
     path('', homeview, name='home'),
@@ -21,5 +21,8 @@ urlpatterns = [
     path('fertilizer/',fertilizer, name='fertilizer'),
     path('training/',training, name='training'),
     path('query/',query, name='query'),
-    path('pay/<int:pk>',payment,name='paynow'),
+    path('pay/<int:pk>',LandingPage.as_view(),name='paynow'),
+    path('success/', successview.as_view(), name='success'),
+    path('cancel/', cancleview.as_view(), name='cancel'),
+    path('checkout/<pk>/', CheckoutView.as_view(),name='checkout')
 ]

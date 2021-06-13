@@ -148,7 +148,7 @@ class Purchase(models.Model):
     country = models.CharField(max_length=32,default='India')
     pincode = models.CharField(max_length=6)
     date_ordered = models.DateTimeField(auto_now=True)
-    total_amt = models.FloatField(default=0.00)
+    total_amt = models.IntegerField(default=0.00)
     is_delivered =  models.BooleanField(default=False)
     product_details = models.TextField()
    

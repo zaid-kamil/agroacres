@@ -22,7 +22,7 @@ class QueryForm(ModelForm):
 
 class PurchaseForm(ModelForm):
     
-    total_amt =forms.FloatField(required=False, disabled=True)
+    total_amt =forms.FloatField(required=False, disabled=False)
     qty = forms.IntegerField()
     class Meta:
         

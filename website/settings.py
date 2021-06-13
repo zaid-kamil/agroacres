@@ -13,10 +13,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import pathlib
-
+from dotenv import load_dotenv 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv() 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -158,5 +159,7 @@ EMAIL_PORT = 1025
 SOCIAL_AUTH_GITHUB_KEY =  'CLIENTID AAPKI'  #'9f39784b773d49c71cb7'
 SOCIAL_AUTH_GITHUB_SECRET =  'CLIENT SECRET AAPKA' #'7364f489d7289886a6509ecf261a8618510b2827 '
 
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51J00F3SGwrYfcKXkZdu7tJhTtIZr0XuiLYOlxISKZo5FckXtcupm5mriRUdiDLCIuQy7WU1LdtYtYqDJM2JV6dnr00CM3foB2q'
-STRIPE_SECRET_KEY = 'sk_test_51J00F3SGwrYfcKXk85CkH5LylRIRq17kiRseLtEYbSvX4sAIHpp1yd1HRI2hw5HKy5056YmKC2m5b0do1NgXAedC00oGAq6Ecw'
+STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY")
+# print(STRIPE_PUBLIC_KEY)
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
+# print(STRIPE_SECRET_KEY)

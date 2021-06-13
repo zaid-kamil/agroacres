@@ -1,11 +1,20 @@
 from django.contrib.auth import login
+from django.contrib.messages.api import success
+from django.db import models
 from django.db.models import query_utils
+from django.views.generic.base import TemplateView
+from stripe.api_resources import checkout, line_item, payment_method
 from app.models import Fertilizer, Season, Seed,Purchase,Crop, Soil, Addseed
 from django.shortcuts import redirect, render
 from .forms import ContactForm, QueryForm,PurchaseForm,AddseedForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.http import JsonResponse
+from django.views import View
+import stripe
 
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 # Create your views here.
 def homeview(request):
@@ -71,12 +80,74 @@ def purchase_one(request,seedpk):
     }
     return render(request,"users/puchase_one.html",ctx)
 
+
+# might get deleted
 def payment(request,pk):
+    # purchase = Purchase.objects.all()
     purchase = Purchase.objects.get(pk=pk)
     ctx = {'purchase':purchase}
     return render(request,'users/payment.html',ctx)
 
 
+# new implementation with stripe 
+from django.contrib.auth.mixins import LoginRequiredMixin
+class LandingPage(LoginRequiredMixin, TemplateView):
+
+    template_name = "users/payment.html"
+
+  
+    def get_context_data( self,**kwargs):
+        # user = request.user
+        product_id = self.kwargs["pk"]
+        product = Purchase.objects.get(pk=product_id)
+        context = super(LandingPage,self).get_context_data(**kwargs)
+        context.update({
+            "product":product,
+            "STRIPE_PUBLIC_KEY": settings.STRIPE_PUBLIC_KEY
+        })
+
+        return context
+
+class CheckoutView(LoginRequiredMixin,TemplateView):
+    
+    def post(self, *args, **kwargs):
+        product_id = self.kwargs["pk"]
+        product = Purchase.objects.get(pk=product_id)
+        price = product.total_amt*100
+
+        YOUR_DOMAIN = "http://127.0.0.1:8000"
+
+        checkout_session =stripe.checkout.Session.create(
+            payment_method_types = ['card'],
+            line_items = [
+                {
+                    'price_data': {
+                        'currency': 'inr',
+                        'unit_amount': price,
+                        'product_data': {
+                            'name': product.product_details
+                        },
+                    },
+                    'quantity':1
+                },
+
+
+            ],
+            mode = 'payment',
+            success_url = YOUR_DOMAIN+'/success',
+            cancel_url = YOUR_DOMAIN + '/cancle'
+        )
+        return JsonResponse({
+            'id': checkout_session.id
+        })
+
+class successview(LoginRequiredMixin,TemplateView):
+    template_name = 'stripe/stripe_payment_success.html'
+
+class cancleview(LoginRequiredMixin,TemplateView):
+    template_name = 'stripe/stripe_payment_cancle.html'
+
+#########################
 
 
 def about(request):
