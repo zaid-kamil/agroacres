@@ -30,7 +30,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-9 mx-auto my-5 text-left text-dark ">
+        <div class="col-lg-11 mx-auto my-5 text-left text-dark ">
             <div class="container">
                 <div class="row">
                  
@@ -42,6 +42,7 @@
                                 <img src="{{ item.img.url }}" class="img-thumbnail float-start border-0" height="150" alt="{{ item.name }}">
                                 <h4 class="card-title">{{item.name}}</h4>
                                 <p class="card-text" style="font-size:.8rem">{{item.description}}</p>
+                                <p class="card-title"><b>Rs. {{item.price}}</b></p>
                             </div>
                             <div class="card-footer">
                                 <a class="btn btn-success btn-sm"  href="{% url 'purchase_one' item.pk %}" class="card-link">Purchase </a>

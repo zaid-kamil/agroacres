@@ -29,7 +29,7 @@ def profile(request):
         context= {'profile':users}
     else:
         context = {'profile': None}
-    return render(request, 'profile.html',context)
+    return render(request, 'users/profile.html',context)
 
 def edit_profile(request, pk):
     try:
@@ -48,13 +48,14 @@ def edit_profile(request, pk):
                 fd.user=request.user
                 fd.email=request.user.email
                 fd.save()
-                return redirect('up')
-        
-        context = {"pform":form}
-        return render(request, 'edit_profile.html', context)
+                return redirect('profile')
+            else:
+                print("form is invalid")
+        context = {"form":form}
+        return render(request, 'users/edit_profile.html', context)
     except Exception as e:
         print('some error occurred',e)
-        return redirect('up')
+        return redirect('profile')
 
 def contact(request):
     form=ContactForm()
@@ -207,7 +208,7 @@ def about(request):
     return render(request,"users/about.html")
 
 
-    
+@login_required   
 def query(request):
     form=QueryForm()
     if request.method=="POST":
@@ -242,12 +243,16 @@ def allcrops(request):
 def searchcrop(request):
     query = request.GET.get('s','')
     if len(query) > 0:
-        data = Crop.objects.filter(name__icontains = query)
-        ctx = {'query':query,'results': data}
-        if len(data)>0:
-            messages.success(request,f"search result found for {query}")
-        else:
-            messages.error(request,f"search result not found for {query}")
+        data1 = Crop.objects.filter(name__icontains = query)
+        data2 = Soil.objects.filter(name__icontains = query)
+        data3 = Fertilizer.objects.filter(name__icontains = query)
+        data4 = Season.objects.filter(name__icontains = query)
+
+        ctx = {'query':query,'results1': data1, 'results2': data2 , 'results3': data3, 'results4': data4}
+       
+    
+
+
 
     else:
         ctx = {"message": "No query is given"}

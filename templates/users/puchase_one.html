@@ -28,16 +28,19 @@
 
     <div class="row my-5">
         <div class="col-lg-4 col-sm-6 mx-auto">
-            <div class="card text-white " style="background-color: rgb(32, 30, 30);">
+            <div class="card text-white " style="background-color: rgb(103, 194, 194) ">
                 
                 <div class="card-body">
-                <img class="img-thumbnail w-30 float-start" src="{{ seed.img.url }}" alt="{{ seed.name }}">
-                    <h4 class="card-title my-3">{{ seed.name }}</h4>
-                </div>
+                
+                   
+               
                 <div class="card-body ">
-                    <p class="lead "> Details : {{seed.description}}<span id='detail'></span>  <span id="[product_detail"></span> {{seed.description}}</span> </p>
-                    <p class="lead ">Price : Rs.{{seed.price}} X <span id='cqty'>1 kg</span> = <span id="total_price">{{seed.price}}</span> </p>
                     
+                    <h4 class="card-title my-3">{{ seed.name }}</h4>
+                    <img class="img-thumbnail w-30 float-start" src="{{ seed.img.url }}" alt="{{ seed.name }}">
+                    <p class="lead my-2"> Details :  {{seed.description}}<span id='detail'></span>  <span id="[product_detail"></span> {{seed.description}}</span> </p>
+                    <p class="lead ">Price : Rs.  {{seed.price}} X <span id='cqty'>{{seed.qty}}</span> = <span id="total_price">{{seed.price}}</span> </p>
+                </div> 
                 </div>
             </div>
         </div>

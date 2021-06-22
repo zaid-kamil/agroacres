@@ -1,7 +1,7 @@
 
 from app.models import Purchase
 from django.urls import path
-from .views import crop, fertilizer, homeview, searchcrop, contact, purchase_one,addseed, season,dashboard, soil,about,query, training,seed,purchase,add_to_cart
+from .views import crop, fertilizer,edit_profile, homeview, searchcrop, contact, purchase_one,addseed, season,dashboard, soil,about,query, training,seed,purchase,add_to_cart
 from .views import payment,LandingPage, successview, cancleview,CheckoutView
 from .views import crop, fertilizer, homeview, searchcrop,profile, contact, purchase_one,addseed, season,dashboard, soil,about,query,view_cart, training,seed,purchase,add_to_cart,allcrops
 from .views import payment
@@ -16,6 +16,7 @@ urlpatterns = [
     path('seed/',seed, name='seed'),
     path('season/',season, name='season'),
     path('profile/',profile, name='profile'),
+    path('edit_profile/<int:pk>/',edit_profile, name='edit_profile'),
     path('crop/',crop, name='crop'),
     path('allcrops/',allcrops, name='allcrops'),
     path('dashboard/',dashboard, name='dashboard'),

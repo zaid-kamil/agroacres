@@ -16,7 +16,7 @@ class QueryForm(ModelForm):
     
     class Meta:
         model = Query
-        fields = ("name","email","mobile","occupation","message")
+        fields = ("name","email","message")
 
 
 
@@ -43,4 +43,5 @@ class ProfileForm(ModelForm):
     
     class Meta:
         model = Profile
-        fields = ('name','address','email','mobile','occupation')
+        fields = ('Full_Name','gender','email','mobile','address','occupation','img')
+  

@@ -24,7 +24,7 @@
 
 
 {% block content %}
-<div class="container" style="background-color: rgb(57, 95, 91); " text-left">
+<div class="container" style="background-color: rgb(103, 194, 194) " >
     <div class="row">
 
         {% for item in crops %}
@@ -33,7 +33,7 @@
                             
                             <div class="card-body">
                                 <img src="{{ item.img.url }}" class="img-thumbnail float-start border-0" height="150" alt="{{ item.name }}">
-                                <h4 class="card-title">{{item.name}}</h4>
+                                <h4 class="card-title"{{item.name}}</h4>
                                 <p class="card-text" style="font-size:.8rem">{{item.category}}</p>
                                 <p class="card-text" style="font-size:.8rem">{{item.instruction}}</p>
                                 <p class="card-text" style="font-size:.8rem">{{item.problem}}</p>

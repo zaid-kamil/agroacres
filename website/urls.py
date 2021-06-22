@@ -15,6 +15,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls')),
     path('user',include('userauth.urls')),
+    
     path('accounts/',include('django.contrib.auth.urls')),
     
 #     path('cancel/', CancelView.as_view(), name='cancel'),

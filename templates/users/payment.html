@@ -20,9 +20,7 @@
 
     }
 
-    .container{
-      background-color: rgb(57, 95, 91); 
-    }
+    
 </style>
 
 {% endblock css %}
@@ -30,15 +28,15 @@
 
 
 {% block content %}
-<div class="container" >
+<div class="container" style="background-color: rgb(103, 194, 194) " >
     {% csrf_token %}
     <div class="row my-5">
-        <div class="col-lg-6 col-sm-6 mx-auto text-left text-white">
+        <div class="col-lg-6 col-sm-6 mx-auto text-left text-white text-center">
             <h2>
                 <span>
-                    Hello: 
+                    Hello 
                 </span>
-                {{product.user}}
+                {{product.user}}!
             </h2>
             <h3>
                 <span>
@@ -47,12 +45,13 @@
                 {{product.total_amt}}
             </h3>
             <strong>{{product.product_details|linebreaks}}</strong>
+            <button type="button" class=" btn-danger btn-sm  " id="checkout-button">Checkout</button>
      </div>
     
     </div>
-    <button type="button" id="checkout-button">Checkout</button>
+   
 </div>
-</div>
+
 {% endblock content %}
 
 
