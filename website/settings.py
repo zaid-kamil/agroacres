@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'social_django',
     'crispy_forms',
     'userauth',
+   
+  
     
     
 ]
@@ -159,20 +161,15 @@ EMAIL_PORT = 1025
 SOCIAL_AUTH_GITHUB_KEY =  'CLIENTID AAPKI'  #'9f39784b773d49c71cb7'
 SOCIAL_AUTH_GITHUB_SECRET =  'CLIENT SECRET AAPKA' #'7364f489d7289886a6509ecf261a8618510b2827 '
 
-<<<<<<< Updated upstream
 STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY")
 # print(STRIPE_PUBLIC_KEY)
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
 # print(STRIPE_SECRET_KEY)
-=======
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51J00F3SGwrYfcKXkZdu7tJhTtIZr0XuiLYOlxISKZo5FckXtcupm5mriRUdiDLCIuQy7WU1LdtYtYqDJM2JV6dnr00CM3foB2q'
-STRIPE_SECRET_KEY = 'sk_test_51J00F3SGwrYfcKXk85CkH5LylRIRq17kiRseLtEYbSvX4sAIHpp1yd1HRI2hw5HKy5056YmKC2m5b0do1NgXAedC00oGAq6Ecw'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'nehasin0608@gmail.com'
-EMAIL_HOST_PASSWORD = 'oqvo erfb nend kglw' #past the key or password app here
+EMAIL_HOST_PASSWORD = 'neha singh0608' #past the key or password app here
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'default from email'
->>>>>>> Stashed changes

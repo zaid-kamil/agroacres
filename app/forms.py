@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 
-from .models import Contact,Query,Purchase,Addseed
+from .models import Contact,Query,Purchase,Addseed,Profile
 
 
 
@@ -37,4 +37,10 @@ class AddseedForm(ModelForm):
     class Meta:
         
         model = Addseed
-        fields = ('name','price','total_amt','product_detail','img')
+        fields = ('name','mobile','address','total_amt','price','product_detail','img')
+
+class ProfileForm(ModelForm):
+    
+    class Meta:
+        model = Profile
+        fields = ('name','address','email','mobile','occupation')

@@ -20,26 +20,57 @@
     {% endblock css %}
     
     {% block content %}
-    <div class="container" style:"background-color: rgb(57, 95, 91); " text-left">
+    <div class="container" style="background-color: rgb(57, 95, 91)"; >
         <div class="row">
             <div class="col-lg-9 mx-auto my-5 text-left text-dark ">
                 
                 <div class="card">
-                     <img src="{{results.0.img.url}}" alt="{{record.name}}">
                    
+                     <img src="{{results.0.img.url}}" alt="{{record.name}}">
+                     <div class="container" style:"background-color: rgb(57, 95, 91)"; >
                     <div class="card-body my-2">
-                        
+                      
                         {% for record in results %}
                         <div>     
-                               
-                            <p class="lead "><b>Crop Name </b>: {{record.name}}</p>
-                            <p class="lead"><b>Category Of Crop </b>: {{record.category}}</p>
-                            <p class="lead"><b>Type oF Crop</b>: {{record.type}}</p>
+                            <h1 style="font-size:50px;"><u>{{record.name}}</u></h1>
+                            <table class="table table-inversed bg-light my-4" style= "border: 3px solid black"; >
+                            <thead >
+                                <tr>
+                                    <th>Category of Crop</th>
+                                    <td>{{record.category}} </td>
+                                </tr>
+                                <tr>
+                                    <th>Type of Crop </th>
+                                    <td> {{record.type}}</td>
+                                </tr>
+                                <tr> 
+                                <th>Sowning Season</th>
+                                <td> {{record.sown}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Harvesting Season</th>
+                                    <td> {{record.harvest}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Soil Required</th>
+                                    <td> {{record.soil}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Fertilizer Required</th>
+                                    <td> {{record.fertilizer}}</td>
+                                </tr>
+
+                                   
+                                    
+                                   
+                                   
+
+                                
+                            </thead>
                             
-                            <p class="lead"><b>Sown in </b>: {{record.sown}}</p>
-                            <p class="lead"><b>Harvested in</b>: {{record.harvest}}</p>
-                            <hr>
-                            <p class="lead"><b> Soil Required</b>: {{record.soil}}</p>
+                        </table>
+
+                            <p class="lead" style="font-size:30px;" ><b> {{record.soil}}</b></p>
                             <img src="{{record.soil.img.url}}"  height="300" width="300" alt="" class="thumbnail">
                             <p>{{record.soil.description}}</p>
                             <hr>
@@ -67,7 +98,7 @@
         </div>
     </div>
     
-    
+    </div>
     
     {% endblock %}
     

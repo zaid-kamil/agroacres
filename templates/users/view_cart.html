@@ -1,0 +1,109 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block css %}
+<style>
+    body {
+        
+        
+        background-image: url("https://images.unsplash.com/flagged/photo-1601316587579-187125db32c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .alert-danger ul {
+        list-style: none;
+        padding-left: 0;
+    }
+</style>
+
+{% endblock css %}
+
+
+{% block content %}
+<div class="container">
+    <table class="table table-inversed bg-light">
+        <thead>
+            <tr>
+                <th>Product Image</th>
+                <th>Seed</th>
+                <th>base price</th>
+                <th>quantity</th>
+                <th>total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+            <tr class="{{item.seed.id}}">
+                <td><img src="{{item.seed.img.url}}" alt="{{item.seed.name}}" height="100" width="100"></td>
+                <td>{{item.seed.name}}</td>
+                <td class="price">
+                    
+                    {{item.seed.price}}
+                    
+                </td>
+                <td class="qty">
+                    <select name="qty" class="qtybox">
+                        {% for i in "0123456789"|make_list %}
+                        <option value ="{{forloop.counter}}">{{forloop.counter}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td class="calcprice">{{item.seed.price}}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <th colspan="5">
+                    No items in card <a href="{% url 'seed' %}">buy seeds</a>
+                </th>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">total price</td>
+                <th>Rs. <span class="totalamt">0.00</span></th>
+            </tr>
+            <tr>
+                <td colspan="4"></td>
+                <td><a href="" class="pay btn btn-danger btn-sm btn-block">Buy now</button></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    {% endblock %}
+    
+    {% block js %}
+    <script>
+        $(function () {
+            // document.querySelector("body > div > table > tbody > tr.\\31 3 > td:nth-child(5)")
+            var total = 0.00
+            $('.calcprice').each(function(i,v){
+                total+=parseInt(v.innerHTML)
+            });
+            url = "{% url 'paycart' 0 %}"
+            url = url.replace(0,total)
+            $('.pay').attr('href',url)
+            
+            $(".totalamt").text(total)
+            
+            $('.qtybox').change(function() {
+                qty = $(this).val()
+                price = $(this).closest('tr').find('td.price').text()
+                $(this).closest('tr').find('td:nth-child(5)').text(qty*price)
+                var total = 0.00
+                $('.calcprice').each(function(i,v){
+                    total+=parseInt(v.innerHTML)
+                });
+                $(".totalamt").text(total)
+                url = "{% url 'paycart' 0 %}"
+                url = url.replace(0,total)
+                $('.pay').attr('href',url)
+            });
+            
+            
+        });
+    </script>    
+    {% endblock js %}

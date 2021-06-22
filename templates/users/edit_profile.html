@@ -1,0 +1,12 @@
+{% extends 'layout/base.html' %}
+
+
+{% block content %}
+    <h1>Edit your profile</h1>
+    <form method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{pform.as_p}}
+        <button>submit</button>
+    </form>
+
+{% endblock content %}

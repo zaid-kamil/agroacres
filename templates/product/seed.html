@@ -33,9 +33,9 @@
         <div class="col-lg-9 mx-auto my-5 text-left text-dark ">
             <div class="container">
                 <div class="row">
-                   
+                 
                     {% for item in seeds %}
-                    <div class="col-md-6">
+                    <div class="col-md-4 d-flex align-items-stretch my-3">
                         <div class="card border-success">
                             
                             <div class="card-body">
@@ -44,8 +44,8 @@
                                 <p class="card-text" style="font-size:.8rem">{{item.description}}</p>
                             </div>
                             <div class="card-footer">
-                                <a class="btn btn-success btn-sm"  href="{% url 'purchase_one' item.pk %}" class="card-link">purchase </a>
-                                <a class="btn btn-success btn-sm"  href="{% url 'add_to_cart' item.pk %}" class="card-link">add to cart</a>
+                                <a class="btn btn-success btn-sm"  href="{% url 'purchase_one' item.pk %}" class="card-link">Purchase </a>
+                                <a class="btn btn-success btn-sm"  href="{% url 'add_to_cart' item.pk %}" class="card-link">Add to cart</a>
                             </div>
                         </div>
                     </div>

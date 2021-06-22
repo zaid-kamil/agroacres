@@ -1,12 +1,13 @@
+from re import L
 from django.contrib.auth import login
 from django.contrib.messages.api import success
 from django.db import models
 from django.db.models import query_utils
 from django.views.generic.base import TemplateView
 from stripe.api_resources import checkout, line_item, payment_method
-from app.models import Fertilizer, Season, Seed,Purchase,Crop, Soil, Addseed
+from app.models import Cart, Fertilizer, Season, Seed,Purchase,Crop, Soil, Addseed,Profile
 from django.shortcuts import redirect, render
-from .forms import ContactForm, QueryForm,PurchaseForm,AddseedForm
+from .forms import ContactForm, QueryForm,PurchaseForm,AddseedForm,ProfileForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -21,6 +22,39 @@ def homeview(request):
     ctx ={'title':'welcome'}
     return render(request,'index.html',context= ctx)
 
+@login_required
+def profile(request):
+    users = Profile.objects.filter(user__pk=request.user.pk)
+    if len(users)==1:
+        context= {'profile':users}
+    else:
+        context = {'profile': None}
+    return render(request, 'profile.html',context)
+
+def edit_profile(request, pk):
+    try:
+        udata = Profile.objects.filter(pk=pk)
+        if len(udata)==1:
+            form = ProfileForm(instance=udata[0])
+        else:
+            form = ProfileForm()
+        if request.method=='POST':
+            if len(udata)==1:
+                form = ProfileForm(request.POST, request.FILES, instance=udata[0])
+            else:
+                form = ProfileForm(request.POST, request.FILES)
+            if form.is_valid():
+                fd=form.save(commit=False)
+                fd.user=request.user
+                fd.email=request.user.email
+                fd.save()
+                return redirect('up')
+        
+        context = {"pform":form}
+        return render(request, 'edit_profile.html', context)
+    except Exception as e:
+        print('some error occurred',e)
+        return redirect('up')
 
 def contact(request):
     form=ContactForm()
@@ -34,7 +68,7 @@ def contact(request):
     ctx = {'form':form}
     return render(request,'users/contact.html',ctx)
 
-
+@login_required
 def addseed(request):
     form=AddseedForm()
     if request.method=="POST":
@@ -47,6 +81,7 @@ def addseed(request):
     ctx = {'form':form}
     return render(request,'users/addseed.html',ctx)
 
+@login_required
 def purchase(request):
     form = PurchaseForm()
     if 'cart' in request.session:
@@ -82,6 +117,7 @@ def purchase_one(request,seedpk):
 
 
 # might get deleted
+@login_required
 def payment(request,pk):
     # purchase = Purchase.objects.all()
     purchase = Purchase.objects.get(pk=pk)
@@ -92,6 +128,23 @@ def payment(request,pk):
 # new implementation with stripe 
 from django.contrib.auth.mixins import LoginRequiredMixin
 class LandingPage(LoginRequiredMixin, TemplateView):
+
+    template_name = "users/payment.html"
+
+  
+    def get_context_data( self,**kwargs):
+        # user = request.user
+        product_id = self.kwargs["pk"]
+        product = Purchase.objects.get(pk=product_id)
+        context = super(LandingPage,self).get_context_data(**kwargs)
+        context.update({
+            "product":product,
+            "STRIPE_PUBLIC_KEY": settings.STRIPE_PUBLIC_KEY
+        })
+
+        return context
+
+class LandingPageCart(LoginRequiredMixin, TemplateView):
 
     template_name = "users/payment.html"
 
@@ -168,12 +221,11 @@ def query(request):
     return render(request,"users/query.html",ctx)
 
 def soil(request):
-    soil = Soil.objects.all()
-    ctx = {'soil':soil}
-    return render(request,'product/soil.html',ctx)
+    
+    return render(request,'product/soil.html')
 
 def seed(request):
-    seeds= Seed.objects.all()
+    seeds = Seed.objects.all()
     ctx = {'seeds':seeds}
     return render(request,'product/seed.html',ctx)
 
@@ -204,17 +256,26 @@ def searchcrop(request):
 
 @login_required
 def add_to_cart(request,seedpk):
-    messages.success(request,'added to cart')
-    return redirect(request, 'user/addcart.html')
+    
+    seed = Seed.objects.get(pk=seedpk)
+    cart = Cart(user=request.user,seed=seed)
+    cart.save()
+    messages.success(request,f"  {seed.name} : Product addded to cart")
+    return redirect('seed')
+
+@login_required
+def view_cart(request):
+    cart = Cart.objects.filter(user__pk=request.user.pk)
+    ctx={'cart':cart}
+    return render(request,'users/view_cart.html',ctx)
+
 
 def season(request):
-    season= Season.objects.all()
-    ctx = {'seeason':season}
+    
     return render(request,'product/season.html')
 
 def fertilizer(request):
-    fertilizer = Fertilizer.objects.all()
-    ctx = {'fertilizer':fertilizer}
+    
     return render(request,'product/fertilizer.html')
 
 def crop(request):
