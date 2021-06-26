@@ -216,5 +216,5 @@ class Cart(models.Model):
         verbose_name_plural='cart'
     
     def __str__(self):
-        return self.seed.name
+        return f'{self.seed.name} cart #{self.pk}'
 

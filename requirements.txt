@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 AdvancedHTTPServer==2.2.0
 aiodns==2.0.0
 aiohttp==3.7.4
@@ -294,34 +293,11 @@ yarl==1.6.3
 zipp==1.0.0
 zope.event==4.4
 zope.interface==5.2.0
-=======
+
 django
 social-auth-app-django
 django-crispy-forms
 pillow
-
->>>>>>> Stashed changes
-
-
-
-
-
-
-{% for record in results2 %}
-                        <div class="container">
-                        <div class="card-body">
-                            <p class="lead" style="font-size:30px;"><b> {{record.soil}}</b></p>
-                            <img src="{{record.soil.img.url}}" height="300" width="300" alt="" >
-                            <p>{{record.soil.description}}</p>
-                            <hr>
-                        </div></div>
-                        {% empty %}
-                    <h3 class="card-title">OPPS!! No Record Found</h3>
-
-                    {% endfor %}
-
-
-
 
 
 

@@ -11,7 +11,7 @@ from .forms import ContactForm, QueryForm,PurchaseForm,AddseedForm,ProfileForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
-from django.http import JsonResponse
+from django.http import JsonResponse, request
 from django.views import View
 import stripe
 
@@ -128,6 +128,8 @@ def payment(request,pk):
 
 # new implementation with stripe 
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+
 class LandingPage(LoginRequiredMixin, TemplateView):
 
     template_name = "users/payment.html"
@@ -145,22 +147,7 @@ class LandingPage(LoginRequiredMixin, TemplateView):
 
         return context
 
-class LandingPageCart(LoginRequiredMixin, TemplateView):
 
-    template_name = "users/payment.html"
-
-  
-    def get_context_data( self,**kwargs):
-        # user = request.user
-        product_id = self.kwargs["pk"]
-        product = Purchase.objects.get(pk=product_id)
-        context = super(LandingPage,self).get_context_data(**kwargs)
-        context.update({
-            "product":product,
-            "STRIPE_PUBLIC_KEY": settings.STRIPE_PUBLIC_KEY
-        })
-
-        return context
 
 class CheckoutView(LoginRequiredMixin,TemplateView):
     
@@ -189,7 +176,7 @@ class CheckoutView(LoginRequiredMixin,TemplateView):
             ],
             mode = 'payment',
             success_url = YOUR_DOMAIN+'/success',
-            cancel_url = YOUR_DOMAIN + '/cancle'
+            cancel_url = YOUR_DOMAIN + '/cancel'
         )
         return JsonResponse({
             'id': checkout_session.id
@@ -271,9 +258,75 @@ def add_to_cart(request,seedpk):
 @login_required
 def view_cart(request):
     cart = Cart.objects.filter(user__pk=request.user.pk)
+    # print("test",cart)
     ctx={'cart':cart}
     return render(request,'users/view_cart.html',ctx)
 
+class LandingPageCart(LoginRequiredMixin, TemplateView):
+    template_name = "users/purchase.html"
+
+    def get_context_data(self, **kwargs):
+        # cart_id = request.user
+        amt_id = self.kwargs["amt"]
+        # print(amt_id)
+        cart = Cart.objects.all()
+        contxt = super(LandingPageCart,self).get_context_data(**kwargs)
+        contxt.update({
+            "cart": cart,
+            "amt":amt_id,
+            "STRIPE_PUBLIC_KEY": settings.STRIPE_PUBLIC_KEY
+        })
+
+        return contxt
+
+class CheckoutViewCart(LoginRequiredMixin, TemplateView): 
+    
+    def post(self, *args, **kwargs):
+
+        amt_id = self.kwargs["price"]
+        price = amt_id*100
+        print('amount: ', amt_id)
+        YOUR_DOMAIN = "http://127.0.0.1:8000"
+
+        checkout_session =stripe.checkout.Session.create(
+            payment_method_types = ['card'],
+            line_items = [
+                {
+                     
+                        'name':'Cart Purchase',
+                        'quantity':1,
+                        'currency':'inr',
+                        'amount': int(price),
+                    
+                },
+
+
+            ],
+            mode = 'payment',
+            success_url = YOUR_DOMAIN+'/success',
+            cancel_url = YOUR_DOMAIN + '/cancel'
+        )
+        return JsonResponse({
+            'id': checkout_session.id
+        })
+
+
+# class LandingPageCart(LoginRequiredMixin, TemplateView):
+
+#     template_name = "users/payment.html"
+
+  
+#     def get_context_data( self,**kwargs):
+#         # user = request.user
+#         product_id = self.kwargs["pk"]
+#         product = Purchase.objects.get(pk=product_id)
+#         context = super(LandingPage,self).get_context_data(**kwargs)
+#         context.update({
+#             "product":product,
+#             "STRIPE_PUBLIC_KEY": settings.STRIPE_PUBLIC_KEY
+#         })
+
+#         return context
 
 def season(request):
     

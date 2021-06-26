@@ -1,7 +1,7 @@
 
 from app.models import Purchase
 from django.urls import path
-from .views import crop, fertilizer,edit_profile, homeview, searchcrop, contact, purchase_one,addseed, season,dashboard, soil,about,query, training,seed,purchase,add_to_cart
+from .views import CheckoutViewCart, crop, fertilizer,edit_profile, homeview, searchcrop, contact, purchase_one,addseed, season,dashboard, soil,about,query, training,seed,purchase,add_to_cart
 from .views import payment,LandingPage, successview, cancleview,CheckoutView
 from .views import crop, fertilizer, homeview, searchcrop,profile, contact, purchase_one,addseed, season,dashboard, soil,about,query,view_cart, training,seed,purchase,add_to_cart,allcrops
 from .views import payment
@@ -32,5 +32,6 @@ urlpatterns = [
     path('paycart/<int:amt>',LandingPageCart.as_view(),name='paycart'),
     path('success/', successview.as_view(), name='success'),
     path('cancel/', cancleview.as_view(), name='cancel'),
-    path('checkout/<pk>/', CheckoutView.as_view(),name='checkout')
+    path('checkout/<pk>/', CheckoutView.as_view(),name='checkout'),
+    path('checkoutcart/', CheckoutViewCart.as_view(),name='checkoutcart')
 ]
